@@ -250,12 +250,12 @@
   background-image: url("image/remove.svg");
 }
 
-.task-tracker__footer {
+.task-tracker__form {
   display: flex;
   gap: 20px;
 }
 
-.task-tracker__footer:has(.task-tracker__field--hide) {
+.task-tracker__form:has(.task-tracker__field--hide) {
   justify-self: center;
 }
 
