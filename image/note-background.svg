@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="none">
+  <g clip-path="url(#a)">
+    <g clip-path="url(#b)">
+      <g clip-path="url(#c)">
+        <path fill="#fff" d="M0 0h1920v960H0z" />
+        <circle cx="3.558" cy="3.558" r="3.558" fill="#f3f3f3" />
+        <circle cx="33.447" cy="3.558" r="3.558" fill="#f3f3f3" />
+        <circle cx="63.336" cy="3.558" r="3.558" fill="#f3f3f3" />
+        <circle cx="3.558" cy="33.447" r="3.558" fill="#f3f3f3" />
+        <circle cx="33.447" cy="33.447" r="3.558" fill="#f3f3f3" />
+        <circle cx="63.336" cy="33.447" r="3.558" fill="#f3f3f3" />
+        <circle cx="3.558" cy="63.336" r="3.558" fill="#f3f3f3" />
+        <circle cx="33.447" cy="63.336" r="3.558" fill="#f3f3f3" />
+        <circle cx="63.336" cy="63.336" r="3.558" fill="#f3f3f3" />
+      </g>
+    </g>
+  </g>
+  <defs>
+    <clipPath id="a">
+      <path fill="#fff" d="M0 0h60v60H0z" />
+    </clipPath>
+    <clipPath id="b">
+      <path fill="#fff" d="M0 0h1920v960H0z" />
+    </clipPath>
+    <clipPath id="c">
+      <path fill="#fff" d="M0 0h1920v960H0z" />
+    </clipPath>
+  </defs>
+</svg>
