@@ -19,3 +19,44 @@
   font-display: swap;
   unicode-range: U+0410-044f, U+0000-007f;
 }
+
+:root {
+  --dark: #1b1b1b;
+  --opacity-dark: rgba(27, 27, 27, .4);
+  --selected: #ececec;
+  --light: #ffffff;
+  --error: #e12b56;
+
+  --font-primary: "Comfortaa", "Arial", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  cursor: url("image/cursor.svg"), auto;
+}
+
+::-moz-selection {
+  color: var(--light);
+  background-color: var(--dark);
+}
+
+::selection {
+  color: var(--light);
+  background-color: var(--dark);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  -webkit-clip-path: inset(100%);
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
