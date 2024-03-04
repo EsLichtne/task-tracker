@@ -10,7 +10,65 @@
 </head>
 
 <body>
-
+  <section class="task-tracker">
+    <h1 class="visually-hidden">Трекер задач.</h1>
+    <p class="task-tracker__title title">ToDo</p>
+    <ul class="task-tracker__list">
+      <li class="task-tracker__item">
+        <input class="task-tracker__checkbox" type="checkbox" id="task-1">
+        <label class="task-tracker__label" for="task-1">Выгулять собаку</label>
+        <button class="task-tracker__edit" type="button">
+          <span class="visually-hidden">Редактировать.</span>
+        </button>
+        <button class="task-tracker__delete" type="reset">
+          <span class="visually-hidden">Удалить.</span>
+        </button>
+      </li>
+      <li class="task-tracker__item">
+        <input class="task-tracker__checkbox" type="checkbox" id="task-2">
+        <label class="task-tracker__label" for="task-2">Дочитать книгу</label>
+        <button class="task-tracker__edit" type="button">
+          <span class="visually-hidden">Редактировать.</span>
+        </button>
+        <button class="task-tracker__delete" type="reset">
+          <span class="visually-hidden">Удалить.</span>
+        </button>
+      </li>
+      <li class="task-tracker__item">
+        <input class="task-tracker__checkbox" type="checkbox" id="task-3">
+        <label class="task-tracker__label" for="task-3">Отправить письмо маме</label>
+        <button class="task-tracker__edit" type="button">
+          <span class="visually-hidden">Редактировать.</span>
+        </button>
+        <button class="task-tracker__delete" type="reset">
+          <span class="visually-hidden">Удалить.</span>
+        </button>
+      </li>
+      <li class="task-tracker__item task-tracker__item--completed">
+        <input class="task-tracker__checkbox" type="checkbox" id="task-4" checked>
+        <label class="task-tracker__label" for="task-4">Сделать зарядку</label>
+        <button class="task-tracker__edit" type="button">
+          <span class="visually-hidden">Редактировать.</span>
+        </button>
+        <button class="task-tracker__delete" type="reset">
+          <span class="visually-hidden">Удалить.</span>
+        </button>
+      </li>
+      <li class="task-tracker__item">
+        <input class="task-tracker__checkbox" type="checkbox" id="task-5">
+        <label class="task-tracker__label" for="task-5">Позвонить риелтору</label>
+        <button class="task-tracker__edit" type="button">
+          <span class="visually-hidden">Редактировать.</span>
+        </button>
+        <button class="task-tracker__delete" type="reset">
+          <span class="visually-hidden">Удалить.</span>
+        </button>
+      </li>
+    </ul>
+    <button class="task-tracker__add-button" type="button">
+      <span class="visually-hidden">Добавить задачу.</span>
+    </button>
+  </section>
 </body>
 
 </html>
