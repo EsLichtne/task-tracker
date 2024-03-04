@@ -325,6 +325,7 @@
     height: 2px;
     background-color: var(--dark);
     border-radius: 8px;
+    cursor: url("image/cursor-pointer.svg"), pointer;
   }
 
   &::before {
