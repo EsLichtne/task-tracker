@@ -66,18 +66,19 @@
           </button>
         </li>
       </ul>
-      <div class="task-tracker__footer">
+      <form class="task-tracker__form" action="https://echo.htmlacademy.ru/" method="post">
         <label class="visually-hidden" for="new-task">Введите задачу.</label>
         <div class="task-tracker__field-wrapper">
-          <input class="task-tracker__field task-tracker__field--hide" type="text" id="new-task" placeholder="Написать эссе">
+          <input class="task-tracker__field task-tracker__field--hide" type="text" id="new-task" name="new-task"
+            placeholder="Написать эссе">
           <button class="task-tracker__delete task-tracker__action-button task-tracker__field-button" type="reset">
             <span class="visually-hidden">Удалить задачу.</span>
           </button>
         </div>
-        <button class="task-tracker__add-button" type="button">
+        <button class="task-tracker__add-button" type="s">
           <span class="visually-hidden">Добавить задачу.</span>
         </button>
-      </div>
+      </form>
     </section>
   </div>
 </body>
