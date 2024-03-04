@@ -60,3 +60,21 @@
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
+
+.page {
+  scrollbar-gutter: stable;
+}
+
+.page__body {
+  height: 100vh;
+  margin: 0;
+  font-family: var(--font-primary);
+  color: var(--dark);
+  background-color: var(--dark);
+}
+
+.page__container {
+  display: grid;
+  align-items: center;
+  min-height: 100%;
+}
