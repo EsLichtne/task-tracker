@@ -281,6 +281,14 @@
   &:active {
     opacity: .3;
   }
+
+  &:disabled {
+    cursor: url("image/cursor-disabled.svg"), not-allowed;
+
+    &:is(:hover, :focus, :active) {
+      opacity: 1;
+    }
+  }
 }
 
 .task-tracker__edit {
