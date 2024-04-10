@@ -118,19 +118,60 @@
   }
 }
 
+.task-tracker__wrapper {
+  margin-bottom: 40px;
+}
+
 .task-tracker__list {
   margin: 0;
-  margin-bottom: 40px;
   padding: 0;
   list-style: none;
   background-color: var(--light);
   outline: 2px solid var(--dark);
   border-radius: 8px;
+}
 
+.task-tracker__list:not(:has(.task-tracker__item)) {
+  display: none;
+}
+
+.task-tracker__wrapper--completed {
+  display: grid;
+  justify-items: center;
+  gap: 30px;
+  padding: 60px 50px 45px;
+  background-color: var(--light);
+  outline: 2px dashed var(--dark);
+
+  &::before {
+    content: "";
+    width: 56px;
+    height: 56px;
+    background-image: url("image/smile.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
 
   @media (min-width: 640px) {
-    margin-bottom: 50px;
+    &::before {
+      width: 64px;
+      height: 64px;
+    }
   }
+}
+
+.task-tracker__completed-message {
+  display: none;
+}
+
+.task-tracker__wrapper--completed .task-tracker__completed-message {
+  display: block;
+  margin: 0;
+  font-size: 34px;
+  line-height: 150%;
+  font-weight: 700;
+  text-align: center;
 }
 
 .task-tracker__item {
