@@ -5,7 +5,7 @@ const addButton = document.querySelector('.task-tracker__add-button');
 const fieldDeleteButton = field.parentElement.querySelector('.task-tracker__delete');
 let editingTask = null;
 
-const containerMinHeight = container.offsetHeight;
+let containerMinHeight = container.offsetHeight;
 container.style.setProperty('--container-height', containerMinHeight + 'px');
 
 const createTask = (taskText) => {
@@ -51,6 +51,8 @@ const onAddButtonClick = (event) => {
     } else {
       list.append(createTask(field.value));
       container.classList.remove('task-tracker__wrapper--completed');
+      containerMinHeight = container.offsetHeight;
+      container.style.setProperty('--container-height', containerMinHeight + 'px');
     }
     field.value = '';
   }
