@@ -49,11 +49,13 @@ const onAddButtonClick = (event) => {
       label.parentElement.querySelector('.task-tracker__edit').focus();
       editingTask = null;
     } else {
-      list.append(createTask(field.value));
+      const task = createTask(field.value);
+      list.append(task);
       container.classList.remove('task-tracker__wrapper--completed');
       containerMinHeight = container.offsetHeight;
       container.style.setProperty('--container-height', containerMinHeight + 'px');
     }
+
     field.value = '';
   }
 };
@@ -68,7 +70,8 @@ const onFieldDeleteButtonClick = () => {
 
 const onListClick = (event) => {
   if (event.target.classList.contains('task-tracker__delete')) {
-    event.target.parentElement.remove();
+    const task = event.target.parentElement;
+    task.remove();
 
     if (list.children.length === 0) {
       container.classList.add('task-tracker__wrapper--completed');
@@ -81,14 +84,18 @@ const onListClick = (event) => {
   }
 
   if (event.target.classList.contains('task-tracker__edit')) {
-    const label = event.target.parentElement.querySelector('.task-tracker__label')
+    const task = event.target.parentElement;
+    const label = task.querySelector('.task-tracker__label')
     field.value = label.textContent;
     field.classList.remove('task-tracker__field--hide');
     field.focus();
-    editingTask = event.target.parentElement;
+    editingTask = task;
   }
 
-  toggleEditDisabled(event.target.parentElement);
+  if (event.target.classList.contains('task-tracker__checkbox')) {
+    const task = event.target.parentElement;
+    toggleEditDisabled(task);
+  }
 };
 
 addButton.addEventListener('click', onAddButtonClick);
