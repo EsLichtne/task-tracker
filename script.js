@@ -5,6 +5,39 @@ const addButton = document.querySelector('.task-tracker__add-button');
 const fieldDeleteButton = field.parentElement.querySelector('.task-tracker__delete');
 let editingTask = null;
 
+let tasks = [];
+
+const createTaskObject = (task) => {
+  const checkbox = task.querySelector('.task-tracker__checkbox');
+  const label = task.querySelector('.task-tracker__label');
+
+  const taskObject = {
+    id: checkbox.id,
+    text: label.textContent,
+    checked: checkbox.checked,
+  };
+
+  tasks.push(taskObject);
+};
+
+const deleteTaskObject = (task) => {
+  const checkbox = task.querySelector('.task-tracker__checkbox');
+  const id = checkbox.id;
+
+  tasks = tasks.filter((task) => task.id !== id);
+};
+
+const toggleTaskChecked = (task) => {
+  const checkbox = task.querySelector('.task-tracker__checkbox');
+  const checkboxChecked = checkbox.checked;
+
+  tasks.forEach((task) => {
+    if (task.id === checkbox.id) {
+      task.checked = checkboxChecked;
+    }
+  });
+}
+
 let containerMinHeight = container.offsetHeight;
 container.style.setProperty('--container-height', containerMinHeight + 'px');
 
@@ -23,6 +56,7 @@ const createTask = (taskText) => {
     </button>
     `;
 
+  createTaskObject(task);
   return task;
 };
 
@@ -35,6 +69,7 @@ const toggleEditDisabled = (task) => {
 
 list.querySelectorAll('.task-tracker__item').forEach((task) => {
   toggleEditDisabled(task);
+  createTaskObject(task);
 });
 
 const onAddButtonClick = (event) => {
@@ -71,6 +106,7 @@ const onFieldDeleteButtonClick = () => {
 const onListClick = (event) => {
   if (event.target.classList.contains('task-tracker__delete')) {
     const task = event.target.parentElement;
+    deleteTaskObject(task);
     task.remove();
 
     if (list.children.length === 0) {
@@ -95,6 +131,7 @@ const onListClick = (event) => {
   if (event.target.classList.contains('task-tracker__checkbox')) {
     const task = event.target.parentElement;
     toggleEditDisabled(task);
+    toggleTaskChecked(task);
   }
 };
 
