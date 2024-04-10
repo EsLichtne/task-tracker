@@ -119,6 +119,7 @@
 }
 
 .task-tracker__wrapper {
+  min-height: var(--container-height);
   margin-bottom: 40px;
 }
 
