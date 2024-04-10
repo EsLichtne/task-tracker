@@ -139,6 +139,7 @@
 .task-tracker__wrapper--completed {
   display: grid;
   justify-items: center;
+  align-items: center;
   gap: 30px;
   padding: 60px 50px 45px;
   background-color: var(--light);
