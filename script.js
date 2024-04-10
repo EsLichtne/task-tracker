@@ -56,7 +56,6 @@ const createTask = (taskText) => {
     </button>
     `;
 
-  createTaskObject(task);
   return task;
 };
 
@@ -68,8 +67,8 @@ const toggleEditDisabled = (task) => {
 };
 
 list.querySelectorAll('.task-tracker__item').forEach((task) => {
-  toggleEditDisabled(task);
   createTaskObject(task);
+  toggleEditDisabled(task);
 });
 
 const onAddButtonClick = (event) => {
@@ -85,6 +84,7 @@ const onAddButtonClick = (event) => {
       editingTask = null;
     } else {
       const task = createTask(field.value);
+      createTaskObject(task);
       list.append(task);
       container.classList.remove('task-tracker__wrapper--completed');
       containerMinHeight = container.offsetHeight;
