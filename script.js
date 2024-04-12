@@ -39,13 +39,7 @@ let tasks = [
 checkEmptyList();
 
 function checkEmptyList() {
-  if (list.children.length === 0) {
-    container.classList.add('task-tracker__wrapper--completed');
-  }
-
-  if (list.children.length > 0) {
-    container.classList.remove('task-tracker__wrapper--completed');
-  }
+  container.classList.toggle('task-tracker__wrapper--completed', list.children.length === 0);
 };
 
 function setContainerHeight() {
