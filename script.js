@@ -8,6 +8,7 @@ let editingTask = null;
 let containerMinHeight = container.offsetHeight;
 setContainerHeight();
 
+// Массив задач по умолчанию
 let tasks = [
   {
     id: 'task-1',
@@ -38,15 +39,18 @@ let tasks = [
 
 checkEmptyList();
 
+// Проверяет, пуст ли список задач и переключает класс контейнера
 function checkEmptyList() {
   container.classList.toggle('task-tracker__wrapper--completed', list.children.length === 0);
 };
 
+// Задаёт высоту контейнера
 function setContainerHeight() {
   containerMinHeight = container.offsetHeight;
   container.style.setProperty('--container-height', containerMinHeight + 'px');
 }
 
+// Проверяет, есть ли данные о задачах в localStorage; если есть, то загружает их
 if (localStorage.getItem('tasks')) {
   tasks = JSON.parse(localStorage.getItem('tasks'));
   tasks.forEach((task) => renderTask(task));
@@ -54,12 +58,14 @@ if (localStorage.getItem('tasks')) {
   tasks.forEach((task) => renderTask(task));
 }
 
+// Сохраняет данные о задачах в localStorage
 function saveToLocalStorage() {
   localStorage.setItem('tasks', JSON.stringify(tasks));
 };
 
 saveToLocalStorage();
 
+// Создаёт HTML-элемент задачи и добавляет его в список задач
 function renderTask(task) {
   const taskHTML = `
     <li class="task-tracker__item">
@@ -78,6 +84,7 @@ function renderTask(task) {
   checkEmptyList();
 };
 
+// Добавляет новую задачу в массив задач и рендерит её на странице
 function addTask(text) {
   const newTask = {
     id: Date.now(),
@@ -90,19 +97,23 @@ function addTask(text) {
   saveToLocalStorage();
 };
 
+// Обрабатывает событие отправки формы
 function onFormSubmit(event) {
   event.preventDefault();
 
   if (field.classList.contains('task-tracker__field--hide')) {
+    // Отображает поле ввода
     field.classList.remove('task-tracker__field--hide');
   } else if (field.value !== '') {
     if (editingTask) {
+      // Редактирует задачу
       const label = editingTask.querySelector('.task-tracker__label');
       label.textContent = field.value;
       label.parentElement.querySelector('.task-tracker__edit').focus();
       updateTask(editingTask);
       editingTask = null;
     } else {
+      // Добавляет новую задачу
       addTask(field.value);
       container.classList.remove('task-tracker__wrapper--completed');
     }
@@ -111,14 +122,18 @@ function onFormSubmit(event) {
   field.value = '';
 };
 
+// Обрабатывает событие клика по кнопке очистки поля ввода
 function onFieldDeleteButtonClick() {
   if (field.value === '') {
+    // Скрывает поле ввода
     field.classList.add('task-tracker__field--hide');
   } else {
+    // Очищает поле ввода
     field.value = '';
   }
 };
 
+// Удаляет задачу
 function deleteTask(task) {
   const id = task.querySelector('.task-tracker__checkbox').id;
   tasks = tasks.filter((task) => String(task.id) !== id);
@@ -126,6 +141,7 @@ function deleteTask(task) {
   saveToLocalStorage();
 };
 
+// Обновляет данные задачи
 function updateTask(task) {
   const id = task.querySelector('.task-tracker__checkbox').id;
   editingText = task.querySelector('.task-tracker__label').textContent;
@@ -139,10 +155,12 @@ function updateTask(task) {
   saveToLocalStorage();
 };
 
+// Устанавливает блокировку для всех выполненных задач
 list.querySelectorAll('.task-tracker__item').forEach((item) => {
   toggleEditDisabled(item);
 });
 
+// Блокирует кнопку редактирования для выполненных задач
 function toggleEditDisabled(task) {
   const checkbox = task.querySelector('.task-tracker__checkbox');
   const editButton = task.querySelector('.task-tracker__edit');
@@ -150,6 +168,7 @@ function toggleEditDisabled(task) {
   editButton.toggleAttribute('disabled', checkbox.checked);
 };
 
+// Отмечает задачу как выполненную / невыполненную
 function toggleTaskChecked(task) {
   const checkbox = task.querySelector('.task-tracker__checkbox');
   const checkboxChecked = checkbox.checked;
@@ -163,7 +182,10 @@ function toggleTaskChecked(task) {
   saveToLocalStorage();
 }
 
+// Обрабатывает события клика на элементах задач
 function onListClick(event) {
+
+  // Событие клика на кнопку удаления
   if (event.target.classList.contains('task-tracker__delete')) {
     const task = event.target.parentElement;
     deleteTask(task);
@@ -178,6 +200,7 @@ function onListClick(event) {
     }
   }
 
+  // Событие клика на кнопку редактирования
   if (event.target.classList.contains('task-tracker__edit')) {
     const task = event.target.parentElement;
     const label = task.querySelector('.task-tracker__label')
@@ -187,6 +210,7 @@ function onListClick(event) {
     editingTask = task;
   }
 
+  // Событие клика на чекбокс
   if (event.target.classList.contains('task-tracker__checkbox')) {
     const task = event.target.parentElement;
     toggleEditDisabled(task);
